@@ -14,6 +14,27 @@ public class PolandNotation {
 
         System.out.println(res);
     }
+
+    public static List<String> toInfixExpressionList(String s){
+        List<String> ls = new ArrayList<String>();
+        int i = 0;
+        String str;
+        char c;
+        do {
+            if((c = s.charAt(i)) < 48 || (c = s.charAt(i)) > 57){
+                ls.add("" + c);
+                i++;
+            }else{
+                str = "";
+                while (i < s.length() && (c = s.charAt(i)) >= 48 || (c = s.charAt(i)) <= 57){
+                    str += c;
+                    i++;
+                }
+                ls.add(str);
+            }
+        }while (i < s.length());
+        return ls;
+    }
     
     public static List<String> getListString(String suffixExpression){
         String[] split = suffixExpression.split(" ");
